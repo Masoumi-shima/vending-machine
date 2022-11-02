@@ -21,12 +21,45 @@ import java.util.Scanner;
  *
  * @author melpomene
  */
-public class VendingMachineDaoImpl
+public class VendingMachineDaoImpl implements VendingMachineDao
 {
     public static final String LIBRARY_FILE = "items.txt";
     public static final String DELIMITER = "::";
     
     Map<String, Items> items = new HashMap<>();
+    
+    @Override
+    public void addItem(Items item) throws VendingMachineDaoException
+    {
+        loadLibrary();
+        items.put(item.getName(), item);
+        writeItemInfo();
+    }
+
+    @Override
+    public void updateInventory(String name) throws VendingMachineDaoException
+    {
+        loadLibrary();
+        Items item = items.get(name);
+        item.popItem();
+        writeItemInfo();
+    }
+
+    @Override
+    public void updateCost(String name, BigDecimal price) throws VendingMachineDaoException
+    {
+        loadLibrary();
+        Items item = items.get(name);
+        item.setCost(price);
+        writeItemInfo();
+    }
+
+    @Override
+    public Collection<Items> getAllItems() throws VendingMachineDaoException
+    {
+        loadLibrary();
+        return items.values();
+    }
     
     private Items unmarshallItemsInfo(String itemsInfoAsText)
     {

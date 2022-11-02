@@ -5,15 +5,31 @@
 
 package com.sm.vending.machine;
 
+import com.sm.vending.machine.dao.VendingMachineDao;
+import com.sm.vending.machine.dao.VendingMachineDaoException;
+import com.sm.vending.machine.dao.VendingMachineDaoImpl;
 import com.sm.vending.machine.dto.Change;
+import com.sm.vending.machine.dto.Items;
+import java.math.BigDecimal;
+import java.util.Collection;
 
 /**
  *
  * @author melpomene
  */
-public class VedningMachine {
+public class VedningMachine
+{
 
-    public static void main(String[] args) {
-        System.out.println(Change.DIMES.getValue());
+    public static void main(String[] args) throws VendingMachineDaoException
+    {
+        String name = "Oreo";
+        BigDecimal price = new BigDecimal("1.2");
+        int amount = 7;
+        Items item = new Items(name, price, amount);
+        VendingMachineDao mydao = new VendingMachineDaoImpl();
+        mydao.addItem(item);
+        System.out.println("Done");
+        mydao.updateCost(name, new BigDecimal("4.09"));
+ 
     }
 }

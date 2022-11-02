@@ -4,11 +4,18 @@
  */
 package com.sm.vending.machine.dao;
 
+import com.sm.vending.machine.dto.Items;
+import java.math.BigDecimal;
+import java.util.Collection;
+
 /**
  *
  * @author melpomene
  */
 public interface VendingMachineDao
 {
-    
+    void addItem(Items item) throws VendingMachineDaoException;
+    void updateInventory(String name) throws VendingMachineDaoException;
+    void updateCost(String name, BigDecimal price) throws VendingMachineDaoException;
+    Collection<Items> getAllItems() throws VendingMachineDaoException;
 }
