@@ -8,7 +8,7 @@ package com.sm.vending.machine.dto;
  *
  * @author melpomene
  */
-public class Machine
+public class Items
 {
     
 }
