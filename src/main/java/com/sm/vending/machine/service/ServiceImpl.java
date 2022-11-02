@@ -6,7 +6,9 @@ package com.sm.vending.machine.service;
 
 import com.sm.vending.machine.dao.AuditDao;
 import com.sm.vending.machine.dao.VendingMachineDao;
+import com.sm.vending.machine.dao.VendingMachineDaoException;
 import com.sm.vending.machine.dto.Items;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +27,26 @@ public class ServiceImpl implements Service {
     }
     
     @Override
-    public Collection<Items> getAllItems() throws Exception{
+    public Collection<Items> getAllItems() throws VendingMachineDaoException{
         return dao.getAllItems();
+    }
+    
+    @Override
+    public void buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException{
+        // check if item exists in the Map of all items
+        // or if there's zero left of the item
+        if(dao.getItem(itemName) == null || dao.getItem(itemName).getAmountOfItems() == 0){
+            throw new NoItemInventoryException("Sorry! We don't have any " + itemName + "s");
+        }
+        // check if money amount is enough
+        // if the cost of the item is greater than the money inserted, throw an exception
+        if(dao.getItem(itemName).getCost().compareTo(money) == 1){
+            throw new InsufficientFundsException("Oh no! That's not enough money. A " + itemName + " costs $" + dao.getItem(itemName).getCost() + ". You only inserted $" + money);
+        }
+        
+        // otherwise remove the item from the inventory
+        dao.updateInventory(itemName);
+        
+        // get change
     }
 }

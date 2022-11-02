@@ -18,4 +18,5 @@ public interface VendingMachineDao
     void updateInventory(String name) throws VendingMachineDaoException;
     void updateCost(String name, BigDecimal price) throws VendingMachineDaoException;
     Collection<Items> getAllItems() throws VendingMachineDaoException;
+    Items getItem(String itemName) throws VendingMachineDaoException;
 }

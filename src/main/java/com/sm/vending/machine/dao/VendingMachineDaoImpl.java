@@ -61,6 +61,13 @@ public class VendingMachineDaoImpl implements VendingMachineDao
         return items.values();
     }
     
+    @Override
+    public Items getItem(String itemName) throws VendingMachineDaoException
+    {
+        loadLibrary();
+        return items.get(itemName);
+    }
+    
     private Items unmarshallItemsInfo(String itemsInfoAsText)
     {
         String[] itemsInfoTokens = itemsInfoAsText.split(DELIMITER);

@@ -49,8 +49,8 @@ public class Controller {
     }
 
     private void printInventory() {
-        //Collection<Items> inventory = service.getAllItems();
-        //view.printInventory(inventory);
+        Collection<Items> inventory = service.getAllItems();
+        view.printInventory(inventory);
     }
 
     private int getMenuSelection() {
@@ -60,7 +60,8 @@ public class Controller {
     private void buyItem(){
         BigDecimal money = view.getMoney();
         String itemName = view.selectItem();
-        // service layer - check if item exists
+        
+        service.buyItem(itemName, money);
     }
     
     private void unknownCommand() {
