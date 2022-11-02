@@ -4,9 +4,11 @@
  */
 package com.sm.vending.machine.controller;
 
+import com.sm.vending.machine.dto.Items;
 import com.sm.vending.machine.service.Service;
 import com.sm.vending.machine.ui.View;
 import java.math.BigDecimal;
+import java.util.Collection;
 
 /**
  *
@@ -32,11 +34,13 @@ public class Controller {
             menuSelection = getMenuSelection();
 
             switch (menuSelection) {
-                case 0 ->
+                case 0:
                     keepGoing = false;
-                case 1 ->
+                    break;
+                case 1:
                     buyItem();
-                default ->
+                    break;
+                default:
                     unknownCommand();
             }
 
@@ -45,7 +49,7 @@ public class Controller {
     }
 
     private void printInventory() {
-        // List<Items> inventory = call to service layer to get inventory
+        //Collection<Items> inventory = service.getAllItems();
         //view.printInventory(inventory);
     }
 
@@ -56,7 +60,7 @@ public class Controller {
     private void buyItem(){
         BigDecimal money = view.getMoney();
         String itemName = view.selectItem();
-        
+        // service layer - check if item exists
     }
     
     private void unknownCommand() {

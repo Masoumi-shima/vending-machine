@@ -12,6 +12,7 @@ import static com.sm.vending.machine.dto.Change.PENNIES;
 import static com.sm.vending.machine.dto.Change.QUARTERS;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class View {
         return io.readInt("Please select from the above choices.", 0, 1);
     }
     
-    public void printInventory(List<Items> inventory){
+    public void printInventory(Collection<Items> inventory){
         io.print("====== VENDING MACHINE INVENTORY ======");
         for(Items item : inventory){
             io.print(item.getName());
@@ -57,13 +58,13 @@ public class View {
         io.print("You have inserted $" + moneyAmount);
     }
     
-    public void displayChange(Map<Change, Integer> change){
+    public void displayChange(Map<String, Integer> change){
         io.print("Here's your change: ");
-        io.print("Dollars: " + change.get(DOLLARS));
-        io.print("Quarters: " + change.get(QUARTERS));
-        io.print("Dimes: " + + change.get(DIMES));
-        io.print("Nickels: " + change.get(NICKLES));
-        io.print("Pennies: " + change.get(PENNIES));
+        io.print("Dollars: " + change.get("DOLLARS"));
+        io.print("Quarters: " + change.get("QUARTERS"));
+        io.print("Dimes: " + + change.get("DIMES"));
+        io.print("Nickels: " + change.get("NICKLES"));
+        io.print("Pennies: " + change.get("PENNIES"));
     }
     
     public void displayUnknownCommand(){

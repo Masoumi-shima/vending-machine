@@ -22,7 +22,7 @@ public class VedningMachine
 
     public static void main(String[] args) throws VendingMachineDaoException
     {
-        String name = "Oreo";
+        /*String name = "Oreo";
         BigDecimal price = new BigDecimal("1.2");
         int amount = 7;
         Items item = new Items(name, price, amount);
@@ -31,7 +31,7 @@ public class VedningMachine
         System.out.println("Done");
         mydao.updateCost(name, new BigDecimal("4.09"));
         Collection<Items> allItems = mydao.getAllItems();
-        allItems.forEach((i) -> System.out.println(i.getName()));
+        allItems.forEach((i) -> System.out.println(i.getName()));*/
  
     }
 }

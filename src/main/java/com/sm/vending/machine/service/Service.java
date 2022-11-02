@@ -4,11 +4,15 @@
  */
 package com.sm.vending.machine.service;
 
+import com.sm.vending.machine.dto.Items;
+import java.util.Collection;
+import java.util.List;
+
 /**
  *
  * @author melpomene
  */
-public class Service
+public interface Service
 {
-    
+    Collection<Items> getAllItems() throws Exception;
 }
