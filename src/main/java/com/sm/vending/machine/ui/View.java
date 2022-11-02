@@ -65,4 +65,12 @@ public class View {
         io.print("Nickels: " + change.get(NICKLES));
         io.print("Pennies: " + change.get(PENNIES));
     }
+    
+    public void displayUnknownCommand(){
+        io.print("Sorry, that's not an option!");
+    }
+    
+    public void displayExitMessage(){
+        io.print("Thanks for using the vending machine, goodbye!");
+    }
 }
