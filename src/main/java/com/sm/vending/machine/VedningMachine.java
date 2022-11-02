@@ -30,6 +30,8 @@ public class VedningMachine
         mydao.addItem(item);
         System.out.println("Done");
         mydao.updateCost(name, new BigDecimal("4.09"));
+        Collection<Items> allItems = mydao.getAllItems();
+        allItems.forEach((i) -> System.out.println(i.getName()));
  
     }
 }
