@@ -5,6 +5,8 @@
 
 package com.sm.vending.machine;
 
+import com.sm.vending.machine.dto.Change;
+
 /**
  *
  * @author melpomene
@@ -12,6 +14,6 @@ package com.sm.vending.machine;
 public class VedningMachine {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println(Change.DIMES.getValue());
     }
 }

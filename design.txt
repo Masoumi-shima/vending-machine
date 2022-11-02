@@ -1,0 +1,16 @@
+View :
+	1. View items
+		a. name
+		b. price
+		c. remaining amout
+	2. Buy
+		a. enter money
+		b. get name of the item
+			b.1 check if item exists
+			b.2 check the money
+				b.2.1 if not enought, display msg + the cost
+		c. return item + change
+		d. update the inventory
+	0. Exit
+	
+	* THIE FILE THING
