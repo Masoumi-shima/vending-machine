@@ -46,7 +46,7 @@ public class ServiceImpl implements Service {
         
         // otherwise remove the item from the inventory
         dao.updateInventory(itemName);
-        
+        System.out.println(dao.getItem(itemName).getAmountOfItems());
         // get change
     }
 }
