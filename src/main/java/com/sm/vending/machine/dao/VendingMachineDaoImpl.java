@@ -140,7 +140,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao
        for(Items item : itemsList)
        {
            itemInfoAsText = marshallItemsInfo(item);
-           out.print(itemInfoAsText);
+           out.println(itemInfoAsText);
            out.flush();
        }
        out.close();
