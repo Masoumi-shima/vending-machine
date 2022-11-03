@@ -13,7 +13,7 @@ import com.sm.vending.machine.dto.Change;
  */
 public class VedningMachine {
 
-    public static void main(String[] args) {
-        System.out.println(Change.DIMES.getValue());
-    }
+//    public static void main(String[] args) {
+//        //System.out.println(Change.DIMES.getValue());
+//    }
 }
