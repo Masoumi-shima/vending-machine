@@ -4,11 +4,18 @@
  */
 package com.sm.vending.machine.service;
 
+import com.sm.vending.machine.dao.VendingMachineDaoException;
+import com.sm.vending.machine.dto.Items;
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
+
 /**
  *
  * @author melpomene
  */
-public class Service
+public interface Service
 {
-    
+    Collection<Items> getAllItems() throws VendingMachineDaoException;
+    void buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException;
 }

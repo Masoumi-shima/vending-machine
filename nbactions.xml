@@ -13,7 +13,11 @@
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
+<<<<<<< HEAD
                 <exec.mainClass>com.sm.vending.machine.dto.Change</exec.mainClass>
+=======
+                <exec.mainClass>com.sm.vending.machine.VedningMachine</exec.mainClass>
+>>>>>>> 1adc0de460f40c91dcc819e3f63520d882bd3031
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
@@ -30,7 +34,11 @@
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
+<<<<<<< HEAD
                 <exec.mainClass>com.sm.vending.machine.dto.Change</exec.mainClass>
+=======
+                <exec.mainClass>com.sm.vending.machine.VedningMachine</exec.mainClass>
+>>>>>>> 1adc0de460f40c91dcc819e3f63520d882bd3031
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
             </properties>
@@ -47,7 +55,11 @@
             <properties>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+<<<<<<< HEAD
                 <exec.mainClass>com.sm.vending.machine.dto.Change</exec.mainClass>
+=======
+                <exec.mainClass>com.sm.vending.machine.VedningMachine</exec.mainClass>
+>>>>>>> 1adc0de460f40c91dcc819e3f63520d882bd3031
                 <exec.executable>java</exec.executable>
                 <exec.appArgs></exec.appArgs>
             </properties>
