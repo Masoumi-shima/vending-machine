@@ -22,7 +22,18 @@ public class VedningMachine
 
     public static void main(String[] args) throws VendingMachineDaoException
     {
+        VendingMachineDao testDao = new VendingMachineDaoImpl();
+        String name = "Oreo";
+        BigDecimal price = new BigDecimal("1.2");
+        int amount = 7;
+        Items item = new Items(name, price, amount);
+        testDao.addItem(item);
         
+        String secondName = "Lindt";
+        BigDecimal secondPrice = new BigDecimal("5.07");
+        int secondAmount = 20;
+        Items secondItem = new Items(secondName, secondPrice, secondAmount);
+        testDao.addItem(secondItem);
  
     }
 }

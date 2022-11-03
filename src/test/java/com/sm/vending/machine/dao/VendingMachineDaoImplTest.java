@@ -8,6 +8,7 @@ import com.sm.vending.machine.dto.Items;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Collection;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,9 +52,72 @@ public class VendingMachineDaoImplTest
                 retrievedItem.getCost(), "cheking item's price");
         assertEquals(item.getAmountOfItems(),
                 retrievedItem.getAmountOfItems(), "cheking amount of items");
-
-//        mydao.updateCost(name, new BigDecimal("4.09"));
-//        Collection<Items> allItems = mydao.getAllItems();
-//        allItems.forEach((i) -> System.out.println(i.getName()));
+    }
+    
+    @Test
+    public void testUpdateInventory() throws VendingMachineDaoException
+    {
+        String name = "Oreo";
+        BigDecimal price = new BigDecimal("1.2");
+        int amount = 7;
+        Items item = new Items(name, price, amount);
+        testDao.addItem(item);
+        Items oldItem = testDao.getItem(name);
+        testDao.updateInventory(name);
+        Items newItem = testDao.getItem(name);
+        
+        assertEquals(oldItem.getName(), 
+                newItem.getName(), "cheking item's name");
+        assertEquals(oldItem.getCost(), 
+               newItem.getCost(), "cheking item's price");
+        assertEquals(oldItem.getAmountOfItems() - 1,
+                newItem.getAmountOfItems(), "cheking amount of items");
+    }
+    
+    @Test
+    public void testUpdatePrice() throws VendingMachineDaoException
+    {
+        String name = "Oreo";
+        BigDecimal price = new BigDecimal("1.2");
+        int amount = 7;
+        Items item = new Items(name, price, amount);
+        testDao.addItem(item);
+        Items oldItem = testDao.getItem(name);
+        BigDecimal hundred = new BigDecimal("100");
+        BigDecimal newPrice = price.add(hundred);
+        testDao.updateCost(name, newPrice);
+        Items newItem = testDao.getItem(name);
+        
+        assertEquals(oldItem.getName(), 
+                newItem.getName(), "cheking item's name");
+        assertEquals(oldItem.getCost().add(hundred), 
+               newItem.getCost(), "cheking item's price");
+        assertEquals(oldItem.getAmountOfItems(),
+                newItem.getAmountOfItems(), "cheking amount of items");
+    }
+    
+    @Test
+    public void testGetAllItems() throws VendingMachineDaoException
+    {
+        String name = "Oreo";
+        BigDecimal price = new BigDecimal("1.2");
+        int amount = 7;
+        Items item = new Items(name, price, amount);
+        testDao.addItem(item);
+        
+        String secondName = "Lindt";
+        BigDecimal secondPrice = new BigDecimal("5.07");
+        int secondAmount = 20;
+        Items secondItem = new Items(secondName, secondPrice, secondAmount);
+        testDao.addItem(secondItem);
+        
+        Collection<Items> allItems = testDao.getAllItems();
+        
+        assertNotNull(allItems, "The list of items should not be null");
+        assertEquals(2, allItems.size(), "Collection of items should have 2 items.");
+        assertTrue(testDao.getAllItems().contains(item), 
+                "The collection of items should include Oreo.");
+        assertTrue(testDao.getAllItems().contains(secondItem), 
+                "The collection of items should include Kit Kat.");
     }
 }
