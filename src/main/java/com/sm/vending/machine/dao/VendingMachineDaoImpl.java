@@ -23,10 +23,21 @@ import java.util.Scanner;
  */
 public class VendingMachineDaoImpl implements VendingMachineDao
 {
-    public static final String LIBRARY_FILE = "items.txt";
+    private final String LIBRARY_FILE; 
     public static final String DELIMITER = "::";
     
     Map<String, Items> items = new HashMap<>();
+
+    public VendingMachineDaoImpl()
+    {
+        this.LIBRARY_FILE = "items.txt";
+    }
+
+    public VendingMachineDaoImpl(String LIBRARY_FILE)
+    {
+        this.LIBRARY_FILE = LIBRARY_FILE;
+    }
+    
     
     @Override
     public void addItem(Items item) throws VendingMachineDaoException
