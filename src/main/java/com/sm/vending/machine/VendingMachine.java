@@ -5,6 +5,8 @@
 
 package com.sm.vending.machine;
 
+import com.sm.vending.machine.controller.VendingMachineController;
+import com.sm.vending.machine.dao.AuditDaoImpl;
 import com.sm.vending.machine.dao.VendingMachineDao;
 import com.sm.vending.machine.dao.VendingMachineDaoException;
 import com.sm.vending.machine.dao.VendingMachineDaoImpl;
@@ -12,6 +14,9 @@ import com.sm.vending.machine.dao.VendingMachineDaoImpl;
 //import com.sm.vending.machine.dao.VendingMachineDaoImpl;
 import com.sm.vending.machine.dto.Change;
 import com.sm.vending.machine.dto.Items;
+import com.sm.vending.machine.service.ServiceImpl;
+import com.sm.vending.machine.ui.UserIOImpl;
+import com.sm.vending.machine.ui.View;
 import java.math.BigDecimal;
 import java.util.Collection;
 
@@ -21,21 +26,31 @@ import java.util.Collection;
  */
 public class VendingMachine
 {
-    public static void main(String[] args) throws VendingMachineDaoException //throws VendingMachineDaoException
+    public static void main(String[] args) throws VendingMachineDaoException
     {
-        VendingMachineDao testDao = new VendingMachineDaoImpl();
+        VendingMachineDao myDao = new VendingMachineDaoImpl();
+        AuditDaoImpl auditDao = new AuditDaoImpl();
+        UserIOImpl io = new UserIOImpl();
+        View view = new View(io);
+        ServiceImpl service = new ServiceImpl(myDao, auditDao);
+        VendingMachineController controller = new VendingMachineController(service, view);
+        
+        addItemsToDB(myDao);
+        controller.run();
+    }
+    
+    private static void addItemsToDB(VendingMachineDao myDao) throws VendingMachineDaoException
+    {
         String name = "Oreo";
         BigDecimal price = new BigDecimal("1.2");
         int amount = 7;
         Items item = new Items(name, price, amount);
-        testDao.addItem(item);
+        myDao.addItem(item);
         
         String secondName = "Lindt";
         BigDecimal secondPrice = new BigDecimal("5.07");
         int secondAmount = 20;
         Items secondItem = new Items(secondName, secondPrice, secondAmount);
-        testDao.addItem(secondItem);
- 
+        myDao.addItem(secondItem);
     }
-
 }

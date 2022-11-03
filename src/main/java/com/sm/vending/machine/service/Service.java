@@ -8,7 +8,6 @@ import com.sm.vending.machine.dao.VendingMachineDaoException;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.List;
 
 /**
  *

@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -99,19 +100,19 @@ public class VendingMachineDaoImplTest
     @Test
     public void testGetAllItems() throws VendingMachineDaoException
     {
-        String name = "Oreo";
+        String name = "Godiva";
         BigDecimal price = new BigDecimal("1.2");
         int amount = 7;
         Items item = new Items(name, price, amount);
         testDao.addItem(item);
         
-        String secondName = "Lindt";
+        String secondName = "Kit Kat";
         BigDecimal secondPrice = new BigDecimal("5.07");
         int secondAmount = 20;
         Items secondItem = new Items(secondName, secondPrice, secondAmount);
         testDao.addItem(secondItem);
         
-        Collection<Items> allItems = testDao.getAllItems();
+        List<Items> allItems = (List<Items>) testDao.getAllItems();
         
         assertNotNull(allItems, "The list of items should not be null");
         assertEquals(2, allItems.size(), "Collection of items should have 2 items.");

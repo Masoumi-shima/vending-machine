@@ -12,20 +12,18 @@ import com.sm.vending.machine.service.Service;
 import com.sm.vending.machine.ui.View;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author melpomene
  */
-public class Controller {
+public class VendingMachineController {
 
     private View view;
     private Service service;
 
     //constructor
-    public Controller(Service service, View view) {
+    public VendingMachineController(Service service, View view) {
         this.view = view;
         this.service = service;
     }
