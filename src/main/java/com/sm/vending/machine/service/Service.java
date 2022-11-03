@@ -8,6 +8,7 @@ import com.sm.vending.machine.dao.VendingMachineDaoException;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  *
@@ -16,5 +17,5 @@ import java.util.Collection;
 public interface Service
 {
     Collection<Items> getAllItems() throws VendingMachineDaoException;
-    void buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException;
+    Map<String,Integer> buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException;
 }

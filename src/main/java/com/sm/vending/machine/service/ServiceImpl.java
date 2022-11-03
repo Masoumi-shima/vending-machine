@@ -7,10 +7,12 @@ package com.sm.vending.machine.service;
 import com.sm.vending.machine.dao.AuditDao;
 import com.sm.vending.machine.dao.VendingMachineDao;
 import com.sm.vending.machine.dao.VendingMachineDaoException;
+import com.sm.vending.machine.dto.Change;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ServiceImpl implements Service {
     }
     
     @Override
-    public void buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException{
+    public Map<String,Integer> buyItem(String itemName, BigDecimal money) throws VendingMachineDaoException, NoItemInventoryException, InsufficientFundsException{
         // check if item exists in the Map of all items
         // or if there's zero left of the item
         if(dao.getItem(itemName) == null || dao.getItem(itemName).getAmountOfItems() == 0){
@@ -48,5 +50,6 @@ public class ServiceImpl implements Service {
         dao.updateInventory(itemName);
         System.out.println(dao.getItem(itemName).getAmountOfItems());
         // get change
+        return Change.getChange(dao.getItem(itemName).getCost(), money);
     }
 }
