@@ -74,4 +74,8 @@ public class View {
     public void displayExitMessage(){
         io.print("Thanks for using the vending machine, goodbye!");
     }
+    
+    public void displayExceptionMessage(String message){
+        io.print(message);
+    }
 }

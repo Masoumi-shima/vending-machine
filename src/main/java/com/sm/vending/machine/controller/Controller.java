@@ -4,11 +4,16 @@
  */
 package com.sm.vending.machine.controller;
 
+import com.sm.vending.machine.dao.VendingMachineDaoException;
 import com.sm.vending.machine.dto.Items;
+import com.sm.vending.machine.service.InsufficientFundsException;
+import com.sm.vending.machine.service.NoItemInventoryException;
 import com.sm.vending.machine.service.Service;
 import com.sm.vending.machine.ui.View;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,25 +54,35 @@ public class Controller {
     }
 
     private void printInventory() {
-        Collection<Items> inventory = service.getAllItems();
-        view.printInventory(inventory);
+        Collection<Items> inventory;
+        try {
+            inventory = service.getAllItems();
+            view.printInventory(inventory);
+        } catch (VendingMachineDaoException ex) {
+            view.displayExceptionMessage(ex.getMessage());
+        }
+
     }
 
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
     }
 
-    private void buyItem(){
+    private void buyItem() {
         BigDecimal money = view.getMoney();
         String itemName = view.selectItem();
-        
-        service.buyItem(itemName, money);
+
+        try {
+            service.buyItem(itemName, money);
+        } catch (VendingMachineDaoException | NoItemInventoryException | InsufficientFundsException ex) {
+            view.displayExceptionMessage(ex.getMessage());
+        }
     }
-    
+
     private void unknownCommand() {
         view.displayUnknownCommand();
     }
-    
+
     public void exitMessage() {
         view.displayExitMessage();
     }
