@@ -41,7 +41,7 @@ public class VendingMachine
     {
         String name = "Oreo";
         BigDecimal price = new BigDecimal("1.2");
-        int amount = 7;
+        int amount = 4;
         Items item = new Items(name, price, amount);
         myDao.addItem(item);
         

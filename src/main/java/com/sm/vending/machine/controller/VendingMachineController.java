@@ -12,6 +12,7 @@ import com.sm.vending.machine.service.Service;
 import com.sm.vending.machine.ui.View;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  *
@@ -71,7 +72,8 @@ public class VendingMachineController {
         String itemName = view.selectItem();
 
         try {
-            service.buyItem(itemName, money);
+            Map<String, Integer> change = service.buyItem(itemName, money);
+            view.displaySuccessfulPurchaseMessage(itemName, change);
         } catch (VendingMachineDaoException | NoItemInventoryException | InsufficientFundsException ex) {
             view.displayExceptionMessage(ex.getMessage());
         }

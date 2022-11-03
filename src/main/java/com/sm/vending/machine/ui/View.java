@@ -39,7 +39,19 @@ public class View {
     }
     
     public BigDecimal getMoney(){
-        return new BigDecimal(io.readString("Please insert money:"));
+        try
+        {
+            return new BigDecimal(io.readString("Please insert money:"));
+ 
+        } 
+        catch (NumberFormatException e)
+        {
+            io.print("That's not real money! Go Away!");
+            System.exit(0);
+            
+            //We know it's not the perfect way to handle this, but it works for now!
+            return new BigDecimal("0");
+        }
     }
     
     public String selectItem(){
@@ -58,6 +70,12 @@ public class View {
         io.print("Dimes: " + + change.get("DIMES"));
         io.print("Nickels: " + change.get("NICKLES"));
         io.print("Pennies: " + change.get("PENNIES"));
+    }
+    
+    public void displaySuccessfulPurchaseMessage(String itemName, Map<String, Integer> change)
+    {
+        io.print("Purchase successful! Here's your " + itemName + "\n");
+        displayChange(change);
     }
     
     public void displayUnknownCommand(){
