@@ -7,11 +7,7 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<<<<<<< HEAD
-        <maven.compiler.source>15</maven.compiler.source>
-=======
-        <maven.compiler.source>11</maven.compiler.source>
->>>>>>> 1adc0de460f40c91dcc819e3f63520d882bd3031
+        <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.sm.vedning.machine.VedningMachine</exec.mainClass>
     </properties>
@@ -36,8 +32,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-<<<<<<< HEAD
-=======
     <build>
     <plugins>
         <plugin>
@@ -53,5 +47,4 @@
         </plugin>
     </plugins>
     </build>
->>>>>>> 1adc0de460f40c91dcc819e3f63520d882bd3031
 </project>

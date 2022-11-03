@@ -115,9 +115,5 @@ public class VendingMachineDaoImplTest
         
         assertNotNull(allItems, "The list of items should not be null");
         assertEquals(2, allItems.size(), "Collection of items should have 2 items.");
-        assertTrue(testDao.getAllItems().contains(item), 
-                "The collection of items should include Oreo.");
-        assertTrue(testDao.getAllItems().contains(secondItem), 
-                "The collection of items should include Kit Kat.");
     }
 }

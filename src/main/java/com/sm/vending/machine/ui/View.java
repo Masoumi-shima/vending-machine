@@ -4,16 +4,9 @@
  */
 package com.sm.vending.machine.ui;
 
-import com.sm.vending.machine.dto.Change;
-import static com.sm.vending.machine.dto.Change.DIMES;
-import static com.sm.vending.machine.dto.Change.DOLLARS;
-import static com.sm.vending.machine.dto.Change.NICKLES;
-import static com.sm.vending.machine.dto.Change.PENNIES;
-import static com.sm.vending.machine.dto.Change.QUARTERS;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
