@@ -6,8 +6,8 @@
 package com.sm.vending.machine;
 
 import com.sm.vending.machine.dao.VendingMachineDao;
-//import com.sm.vending.machine.dao.VendingMachineDaoException;
-//import com.sm.vending.machine.dao.VendingMachineDaoImpl;
+import com.sm.vending.machine.dao.VendingMachineDaoException;
+import com.sm.vending.machine.dao.VendingMachineDaoImpl;
 import com.sm.vending.machine.dto.Change;
 import com.sm.vending.machine.dto.Items;
 import java.math.BigDecimal;
@@ -19,7 +19,7 @@ import java.util.Collection;
  */
 public class VendingMachine
 {
-    public static void main(String[] args) //throws VendingMachineDaoException
+    public static void main(String[] args) throws VendingMachineDaoException
     {
         VendingMachineDao testDao = new VendingMachineDaoImpl();
         String name = "Oreo";

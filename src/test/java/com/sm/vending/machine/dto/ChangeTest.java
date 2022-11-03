@@ -71,5 +71,22 @@ public class ChangeTest {
         expectedAns.put("PENNIES", 1);
         assertFalse(!(result.equals(expectedAns)),"The map returned is not what was expected");
     }
+    @Test
+    public void testingProperChangeReturned4() {
+        //ARRANGE
+        BigDecimal cost = new BigDecimal("2.34");
+        BigDecimal moneyGiven = new BigDecimal("10");
+        //ACT
+        Map result = getChange(cost,moneyGiven);//$4.83 expected
+        //ASSERT
+        Map expectedAns = new HashMap<String,Integer>();
+        
+        expectedAns.put("DOLLARS", 7);
+        expectedAns.put("QUARTERS", 2);
+        expectedAns.put("DIMES", 1);
+        expectedAns.put("NICKLES", 1);
+        expectedAns.put("PENNIES", 1);
+        assertFalse(!(result.equals(expectedAns)),"The map returned is not what was expected");
+    }
     
 }
