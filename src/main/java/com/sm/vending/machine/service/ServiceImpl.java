@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -30,7 +32,11 @@ public class ServiceImpl implements Service {
     
     @Override
     public Collection<Items> getAllItems() throws VendingMachineDaoException{
-        return dao.getAllItems();
+        
+        Collection<Items> availableItems = dao.getAllItems().stream()
+                .filter((item) -> item.getAmountOfItems() != 0)
+                .collect(Collectors.toList());
+        return availableItems;
     }
     
     @Override
@@ -38,11 +44,13 @@ public class ServiceImpl implements Service {
         // check if item exists in the Map of all items
         // or if there's zero left of the item
         if(dao.getItem(itemName) == null || dao.getItem(itemName).getAmountOfItems() == 0){
+            auditDao.writeAuditEntry("Attemp to buy " + itemName + " failed! Out of stock!");
             throw new NoItemInventoryException("Sorry! We don't have any " + itemName + "s");
         }
         // check if money amount is enough
         // if the cost of the item is greater than the money inserted, throw an exception
         if(dao.getItem(itemName).getCost().compareTo(money) == 1){
+            auditDao.writeAuditEntry("Attemp to buy " + itemName + " failed! Insufficient funds!");
             throw new InsufficientFundsException("Oh no! That's not enough money. A " + itemName + " costs $" + dao.getItem(itemName).getCost() + ". You only inserted $" + money);
         }
         

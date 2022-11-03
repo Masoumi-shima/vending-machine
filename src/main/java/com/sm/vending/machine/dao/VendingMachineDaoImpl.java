@@ -27,6 +27,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao
     public static final String DELIMITER = "::";
     
     Map<String, Items> items = new HashMap<>();
+    AuditDaoImpl audit = new AuditDaoImpl();
 
     public VendingMachineDaoImpl()
     {
@@ -54,6 +55,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao
         Items item = items.get(name);
         item.popItem();
         writeItemInfo();
+        audit.writeAuditEntry(item.getName() + "::"+ item.getAmountOfItems());
     }
 
     @Override
